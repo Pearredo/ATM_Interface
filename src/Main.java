@@ -12,7 +12,7 @@ public class Main extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-
+    //example comment
     @Override
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("ATM");
