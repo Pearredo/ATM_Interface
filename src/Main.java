@@ -1,30 +1,35 @@
+
 import javafx.application.Application;
-import javafx.scene.layout.StackPane;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import java.awt.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application  {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-    //example comment
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
+
         primaryStage.setTitle("ATM");
 
-        Button button = new Button();
-        button.setText("Insert card information");
+        TextField CARD_NUMBER_TEXTFIELD = new PasswordField();
+        TextField CARD_PIN_TEXTFIELD = new PasswordField();
+        Button SUBMIT_CARD_INFO = new Button("Submit");
+        GridPane root = new GridPane();
+        root.addRow(0, new Label("Input Credit Card Number:\t"),CARD_NUMBER_TEXTFIELD);
+        root.addRow(1,new Label("Input PIN:\t"),CARD_PIN_TEXTFIELD);
+        root.addRow(2,SUBMIT_CARD_INFO);
 
-        StackPane layout = new StackPane();
-        layout.getChildren().add(button);
+        Scene scene = new Scene(root, 350,200);
 
-        Scene scene = new Scene(layout, 300, 250);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        Application.launch(args);
     }
 }
