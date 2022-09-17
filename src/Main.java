@@ -21,9 +21,6 @@ public class Main extends Application  {
         //SCENE STACK
         Stack sceneStack = new Stack();
 
-        //Back Button
-        Button BACK_BUTTON = new Button("back");
-
         //Primary scene
         TextField CARD_NUMBER_TEXTFIELD = new PasswordField();
         TextField CARD_PIN_TEXTFIELD = new PasswordField();
@@ -46,8 +43,7 @@ public class Main extends Application  {
         GridPane rootOptions = new GridPane();
         rootOptions.addRow(0, TO_WITHDRAW, TO_DEPOSIT);
         rootOptions.addRow(1, TO_CHECK_BALANCE,TO_PRINT_STATEMENT);
-        rootOptions.addRow(2, BACK_BUTTON);
-        
+
         Scene optionsScene = new Scene(rootOptions,350,200);
 
         //DEPOSIT FUNCTIONS SCENE
@@ -55,14 +51,13 @@ public class Main extends Application  {
         TextField DEPOSIT_TEXTFIELD = new TextField();
         GridPane rootDeposit = new GridPane();
         rootDeposit.addRow(0,new Label("Deposit Amount:"),DEPOSIT_TEXTFIELD,DEPOSIT_MONEY_BUTTON);
-        rootDeposit.addRow(1,BACK_BUTTON);
 
         Scene depositScene = new Scene(rootDeposit, 350,200);
 
         //MONEY DEPOSITED BUTTON
         GridPane rootDeposit2 = new GridPane();
         Label MONEY_DEPOSITED_LABEL = new Label();
-        rootDeposit2.addRow(0, MONEY_DEPOSITED_LABEL,BACK_BUTTON);
+        rootDeposit2.addRow(0, MONEY_DEPOSITED_LABEL);
 
         Scene MONEY_DEPOSITED_SCENE = new Scene(rootDeposit2,350,200);
 
@@ -71,58 +66,31 @@ public class Main extends Application  {
         Button WITHDRAW_MONEY_BUTTON = new Button("WITHDRAW");
         GridPane rootWithdraw = new GridPane();
         rootWithdraw.addRow(0,new Label("Withdraw Amount:"), WITHDRAW_MONEY_TEXTFIELD,WITHDRAW_MONEY_BUTTON);
-        rootWithdraw.addRow(1,BACK_BUTTON);
 
         Scene withdrawScene = new Scene(rootWithdraw,350,200);
 
         //CHECK BALANCE SCENE
         GridPane rootCheckBalance = new GridPane();
         rootCheckBalance.addRow(0,new Label("Current Balance:\t0.00"));
-        rootCheckBalance.addRow(1,BACK_BUTTON);
 
         Scene checkBalanceScene = new Scene(rootCheckBalance, 350,200);
 
         //button events
-        SUBMIT_CARD_INFO.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                sceneStack.push(primaryStage.getScene());
-                primaryStage.setScene(optionsScene);
-            }
+        SUBMIT_CARD_INFO.setOnAction(event -> {
+            sceneStack.push(primaryStage.getScene());
+            primaryStage.setScene(optionsScene);
         });
-        TO_DEPOSIT.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                sceneStack.push(primaryStage.getScene());
-                primaryStage.setScene(depositScene);
-            }
+        TO_DEPOSIT.setOnAction(event -> {
+            sceneStack.push(primaryStage.getScene());
+            primaryStage.setScene(depositScene);
         });
-        TO_WITHDRAW.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                sceneStack.push(primaryStage.getScene());
-                primaryStage.setScene(withdrawScene);
-            }
+        TO_WITHDRAW.setOnAction(event -> {
+            sceneStack.push(primaryStage.getScene());
+            primaryStage.setScene(withdrawScene);
         });
-        TO_CHECK_BALANCE.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                sceneStack.push(primaryStage.getScene());
-                primaryStage.setScene(checkBalanceScene);
-            }
-        });
-        BACK_BUTTON.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                primaryStage.setScene((Scene) sceneStack.pop());
-            }
-        });
-        DEPOSIT_MONEY_BUTTON.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                MONEY_DEPOSITED_LABEL.setText("Deposited:\t$"+DEPOSIT_TEXTFIELD.getText());
-                primaryStage.setScene(MONEY_DEPOSITED_SCENE);
-            }
+        TO_CHECK_BALANCE.setOnAction(event -> {
+            sceneStack.push(primaryStage.getScene());
+            primaryStage.setScene(checkBalanceScene);
         });
 
         primaryStage.setScene(scene);
