@@ -75,6 +75,21 @@ public class Main extends Application  {
 
         Scene checkBalanceScene = new Scene(rootCheckBalance, 350,200);
 
+        //create Account Scene
+        TextField FirstNameInput = new TextField();
+        TextField LastNameInput = new TextField();
+        TextField PINInput = new TextField();
+        TextField InitialDepositMoney = new TextField();
+        Button CREATE_ACCOUNT_BUTTON = new Button("Generate Account");
+        GridPane rootCreateAccount = new GridPane();
+
+        rootCreateAccount.addRow(0,new Label("First Name:\t"), FirstNameInput, new Label("Last Name:\t"), LastNameInput);
+        rootCreateAccount.addRow(1,new Label("Input Initial Deposit:\t$"),InitialDepositMoney,new Label("Input PIN",PINInput));
+        rootCreateAccount.addRow(2,CREATE_ACCOUNT_BUTTON);
+
+        //account created scene
+        Button ACtoPRIMARY = new Button("Back to main page");
+
         //button events
         SUBMIT_CARD_INFO.setOnAction(event -> {
             sceneStack.push(primaryStage.getScene());
@@ -92,6 +107,10 @@ public class Main extends Application  {
             sceneStack.push(primaryStage.getScene());
             primaryStage.setScene(checkBalanceScene);
         });
+        DEPOSIT_MONEY_BUTTON.setOnAction(event -> {
+            primaryStage.setScene(MONEY_DEPOSITED_SCENE);
+        });
+
 
         primaryStage.setScene(scene);
         primaryStage.show();
