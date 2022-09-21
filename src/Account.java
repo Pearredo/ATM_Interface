@@ -1,11 +1,13 @@
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     String FirstName;
     String LastName;
     int PIN;
-    int CC_NUMBER;
+    String  CC_NUMBER;
     float DEPOSIT = 0.00F;
 
-    public Account(String FirstName, String LastName, int PIN, int CC_NUMBER, float DEPOSIT) {
+    public Account(String FirstName, String LastName, int PIN, String CC_NUMBER, float DEPOSIT) {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.PIN = PIN;
@@ -17,7 +19,7 @@ public class Account {
         return DEPOSIT;
     }
 
-    public int getCC_NUMBER() {
+    public String getCC_NUMBER() {
         return CC_NUMBER;
     }
 
